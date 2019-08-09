@@ -1,8 +1,11 @@
 # TypeScript Decorators
 
-## TIL
+## `TIL`
 
 ### Decorators
+
+-   Supports annotating or modifying classes and class members
+-   Experimental feature of TS
 
 -   tsconfig.json
 

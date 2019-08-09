@@ -7,7 +7,7 @@ class User {
     }
 }
 
-function classDecorator(constructor: typeof User) {
+function classDecorator(constructor: Function) {
     console.log(constructor);
 }
 
