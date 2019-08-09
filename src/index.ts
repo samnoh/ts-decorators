@@ -1,14 +1,18 @@
+@classDecorator
 class User {
     constructor(public name: string) {}
 
-    @testDecorator
-    printName(): void {
-        console.log(this.name);
+    printName(@parameterDecorator greetings: string): void {
+        // console.log(greetings + '! ' + this.name);
     }
 }
 
-function testDecorator(target: any, key: string, descriptor: any): void {
-    console.log('Target', target); // User
-    console.log('Key', key); // printName
-    console.log('Descriptor', descriptor); // property descriptor
+function classDecorator(constructor: typeof User) {
+    console.log(constructor);
 }
+
+function parameterDecorator(target: User, key: string, index: number): void {
+    console.log(key, index);
+}
+
+new User('smith').printName('Hello');

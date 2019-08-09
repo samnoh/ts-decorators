@@ -23,9 +23,25 @@ class User {
     }
 }
 
-function testDecorator(target: any, key: string, descriptor: any): void {
+function testDecorator(target: User, key: string, desc: PropertyDescriptor): void {
     console.log('Target', target); // User -> prototype
     console.log('Key', key); // printName -> property/method/accessor
-    console.log('Descriptor', descriptor); // property descriptor
+    console.log('Descriptor', desc); // property descriptor
 }
+```
+
+```typescript
+class User {
+    constructor(public name: string) {}
+
+    printName(@parameterDecorator greetings: string): void {
+        console.log(greetings + '! ' + this.name);
+    }
+}
+
+function parameterDecorator(target: User, key: string, index: number): void {
+    console.log(key, index); // printName 0
+}
+
+new User('smith').printName('Hello');
 ```
